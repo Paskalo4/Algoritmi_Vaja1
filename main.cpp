@@ -69,6 +69,40 @@ void Counting_Sort(vector<int>& A) {
     }
 }
 
+void Roman_Sort(vector<int>& A) {
+    int min_val = A[0];
+    int max_val = A[0];
+    for (int i = 1; i < A.size(); i++) {
+        if (A[i] < min_val) {
+            min_val = A[i];
+        }
+        if (A[i] > max_val) {
+            max_val = A[i];
+        }
+    }
+
+    int range = max_val - min_val + 1;
+    vector<int> C(range, 0);
+
+    for (int num : A) {
+        C[num - min_val]++;
+    }
+
+    vector<int> B(A.size());
+    int idx = 0;
+
+    // Populiramo polje B tako, da za vsako neničelno vrednost v C ponovimo to vrednost v B
+    for (int i = 0; i < range; i++) {
+        while (C[i] > 0) {
+            B[idx++] = i + min_val;
+            C[i]--;
+        }
+    }
+
+    // Kopiramo izhodno polje B nazaj v A
+    A = B;
+}
+
 int main(int argc, const char* argv[]) {
     vector<int> A;
 
@@ -80,7 +114,8 @@ int main(int argc, const char* argv[]) {
         Counting_Sort(A);
     }
     else {
-        //Roman sort
+        //roman sort
+        Roman_Sort(A);
     }
     Izpis_Stevil(&A[0],A.size());
 
