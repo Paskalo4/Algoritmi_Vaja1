@@ -69,6 +69,10 @@ void Counting_Sort(vector<int>& A) {
     }
 }
 
+void Roman_Sort(vector<int>& A) {
+
+}
+
 int main(int argc, const char* argv[]) {
     vector<int> A;
 
@@ -80,7 +84,7 @@ int main(int argc, const char* argv[]) {
         Counting_Sort(A);
     }
     else {
-        //Roman sort
+        Roman_Sort(A);
     }
     Izpis_Stevil(&A[0],A.size());
 
