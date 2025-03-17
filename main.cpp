@@ -61,11 +61,11 @@ void Counting_Sort(vector<int>& A) {
         B[C[A[i]] - 1] = A[i];
         C[A[i]]--;
     }
-    // Kopiramo izhodno polje B nazaj v A
-    A = B;
+
+    A = B; // Kopiramo izhodno polje B nazaj v A
     // Po sortiranju vrnemo vrednosti nazaj v izvorni interval [min, max]
     for (int i = 0; i < A.size(); i++) {
-        A[i] += min_val;  // Pomaknemo nazaj v izvorni interval
+        A[i] += min_val;
     }
 }
 
