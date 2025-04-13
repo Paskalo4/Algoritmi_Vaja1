@@ -22,7 +22,7 @@ jobs:
 
       - name: Preveri prijavo
         run: |
-          docker info --format '{{.LoggedIn}}' | grep -q "true" || (echo "Prijava v DockerHub ni uspela" && exit 1)
+          sudo docker info --format '{{.LoggedIn}}' | grep -q "true" || (echo "Prijava v DockerHub ni uspela" && exit 1)
 
       - name: Zgradi in potisni Docker sliko
         run: |
