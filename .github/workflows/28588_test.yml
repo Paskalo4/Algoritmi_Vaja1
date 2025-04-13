@@ -59,6 +59,7 @@ jobs:
 
       - name: Pripravi okolje
         run: |
+          rm -rf build
           mkdir -p build
           cd build
           cmake ..
