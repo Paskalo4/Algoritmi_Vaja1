@@ -22,5 +22,5 @@ jobs:
 
       - name: Zgradi in potisni Docker sliko
         run: |
-          docker build -t paskalo4/algoritmi-vaja1:latest .
-          docker push paskalo4/algoritmi-vaja1:latest
+          sudo docker build -t paskalo4/algoritmi-vaja1:latest .
+          sudo docker push paskalo4/algoritmi-vaja1:latest
