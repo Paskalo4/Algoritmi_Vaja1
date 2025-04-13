@@ -18,7 +18,7 @@ TEST_CASE("Test Roman Sort", "[sorting]") {
 
 TEST_CASE("Test Reading Numbers", "[io]") {
     std::vector<int> vec;
-    const char* filename = "../tests/input.txt";  // Popravljena pot
+    const char* filename = "tests/input.txt";  // Popravljena pot
     REQUIRE(Branje_Stevil(vec, filename) == true);
     REQUIRE(vec == std::vector<int>({4, 2, 7, 1}));
 }
