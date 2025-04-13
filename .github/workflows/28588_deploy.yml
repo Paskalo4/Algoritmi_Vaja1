@@ -20,6 +20,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Preveri prijavo
+        run: |
+          docker info --format '{{.LoggedIn}}' | grep -q "true" || (echo "Prijava v DockerHub ni uspela" && exit 1)
+
       - name: Zgradi in potisni Docker sliko
         run: |
           sudo docker build -t paskalo4/algoritmi-vaja1:latest .
