@@ -1,0 +1,69 @@
+name: Testiranje kode
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-tests:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v3
+
+      - name: Preveri obstoj testnih skript
+        run: |
+          if [ -f "tests/test_sort.cpp" ]; then
+            echo "Testne skripte obstajajo."
+          else
+            echo "Testne skripte ne obstajajo!" >&2
+            exit 1
+          fi 2> napaka.txt
+
+      - name: Shranjevanje artefakta
+        uses: actions/upload-artifact@v3
+        with:
+          name: napaka
+          path: napaka.txt
+
+  run-tests:
+    needs: check-tests
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        gcc-version: [9, 10]
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v3
+
+      - name: Prenos artefakta
+        uses: actions/download-artifact@v3
+        with:
+          name: napaka
+          path: .
+
+      - name: Preveri napake
+        run: |
+          if [ -s napaka.txt ]; then
+            echo "Napaka v prvem poslu:"
+            cat napaka.txt
+            exit 1
+          fi
+
+      - name: Namesti GCC
+        run: |
+          sudo apt update
+          sudo apt install -y g++-${{ matrix.gcc-version }}
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ matrix.gcc-version }} 100
+
+      - name: Pripravi okolje
+        run: |
+          mkdir -p build
+          cd build
+          cmake ..
+          cmake --build .
+
+      - name: Poženi teste
+        run: |
+          ./build/tests

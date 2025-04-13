@@ -1,3 +1,0 @@
-/home/paskal/Documents/ALG/Vaja1/cmake-build-debug/CMakeFiles/Vaja1.dir
-/home/paskal/Documents/ALG/Vaja1/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/paskal/Documents/ALG/Vaja1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

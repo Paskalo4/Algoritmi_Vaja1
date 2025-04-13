@@ -1,0 +1,4 @@
+/home/paskal/Documents/SA/CICD/Algoritmi_Vaja1/build/CMakeFiles/sorting.dir
+/home/paskal/Documents/SA/CICD/Algoritmi_Vaja1/build/CMakeFiles/tests.dir
+/home/paskal/Documents/SA/CICD/Algoritmi_Vaja1/build/CMakeFiles/edit_cache.dir
+/home/paskal/Documents/SA/CICD/Algoritmi_Vaja1/build/CMakeFiles/rebuild_cache.dir
